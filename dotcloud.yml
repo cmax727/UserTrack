@@ -1,5 +1,0 @@
-www:
-  type: nodejs
-  approot: hmapp
-  config:
-    node_version: v0.6.x
