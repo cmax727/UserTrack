@@ -1,0 +1,162 @@
+
+
+<script>
+
+$(function() {
+    var socket = io.connect('<%- socketConnectionString %>');
+    
+    $.getJSON("/getDataInJson", function(obj) {
+        for (var i in obj){
+            //break;
+            var str="";
+            str+="<tr>"
+            str+="<td>"+obj[i].ip+"</td>";
+            str+="<td>"+obj[i].sessionId+"</td>";
+            str+="<td id='urlActId'>"+obj[i].urlActionId+"</td>";
+            str+="<td>"+obj[i].url+"</td>";
+            str+="<td>"+obj[i].browser+"</td>";
+            str+="<td>"+obj[i].resolutionW+"x"+obj[i].resolutionH + "</td>";
+            str+="<td>"+obj[i].actionsCount+"</td>";
+            str+="<td>"+obj[i].startTime+"</td>";
+            str+="</tr>";
+            $("#tableBody").append(str);
+            
+        }
+        $('#dataTable').dataTable();
+        
+        $('tr').click(function(){
+         if(!$(this).attr('class')) return;
+         $(this).parent().children().attr('style','');
+         $(this).parent().children().removeClass('clickedTr');
+         $('.sorting_1').attr('style', '');
+         $(this).attr('style', 'background-color:gray');
+         $(this).addClass('clickedTr');
+         $(this).find('.sorting_1').first().attr('style', 'background-color:gray');
+         
+         var td=$(this).children().first();
+         //socket.emit('adminWantsToRetro',td.text(),td.next().text(),td.next().next().text());
+         //socket.emit('adminWantsToRetro',td.text(),td.next().text(),td.next().next().text());
+         socket.emit('adminWantsAnImage',td.next().next().text());
+         //
+       });
+       
+       $('#start').click(function(){
+           
+           if($('#status').text()=='Started!' || $('#status').text()=='Already started!')
+           {
+               $('#status').text('Already started!');
+            return;
+           }
+           
+           if($('.clickedTr').length==0){
+               alert('please, at first choose one urlAction');
+               return;
+           }
+           
+           socket.emit('adminWantsToRetro',$('.clickedTr').first().find('#urlActId').first().text());
+           $('#status').text('Started!');
+       });
+       
+       $('#stop').click(function(){
+           $('#status').text('Stoped.');
+           socket.emit('adminWantsToStopRetro');
+       });
+    });
+    
+    
+    	//"bProcessing": true,
+		//"bServerSide": true
+		//"sAjaxSource": "/getDataToTable"
+  
+  $('#mouseCursor').css('display','none');
+  
+  var svgMouseClick,circle;
+  $('#svgSircle').svg({onLoad: function(svg){svgMouseClick=svg;}});
+  
+  function drawMouseClick(x,y){
+    var r=2;
+    var circle=svgMouseClick.circle(x-r/2, y-r/2, r, {fill:'none',stroke: 
+    'red', strokeWidth: 5}); 
+    $(circle).animate({svgR: 30, svgStroke: 'pink'}, 500,function(){
+      $(this).remove();
+    });
+  }
+  
+  
+  socket.on('connect', function() {
+    
+    socket.emit('adminConnected');
+    
+    socket.on('theEnd',function(){
+        $('#status').text('The end');
+    });
+        
+    socket.on('imageToAdminSent',function(img){
+      //alert('new image came'+img);
+      $('#newImg').attr('src',img);
+      $('#newImg').addClass('newImg');
+      $('#mouseCursor').css('display','block');
+    });
+    
+    socket.on('userAction', function(action) {
+      if(action.action=='m'){
+        
+        $("#mouseCursor").css('top',action.y);
+        $("#mouseCursor").css('left',action.x);
+      }
+      
+      if(action.action=='c'){
+        //click mouse
+        $('svg').width($('#newImg').width());
+        drawMouseClick(action.x,action.y);
+      }
+      
+      if(action.action=='k'){
+        //key press
+      }
+    });
+    
+  });
+  
+  
+  
+});
+
+</script>
+<table id="dataTable" class="display"  cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+      <th>IP</th>
+      <th>SessionId</th>
+      <th>UrlActionId</th>
+      <th>Url</th>
+      <th>Browser</th>
+      <th>Resolution</th>
+      <th>Actions count</th>
+      <th>Start time</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+  <!--<tfoot>
+  <tr>
+      <th>IP</th>
+      <th>SessionId</th>
+      <th>Country</th>
+      <th>Browser</th>
+      <th>Resolution</th>
+      <th>Start time</th>
+      <th>Url</th>
+    </tr>
+  </tfoot> -->
+</table>
+<p>
+<div style="margin-top:30px"></div>
+<div id="status">Nothing happened yet</div><p>
+<input type="button" id="start" value="start" name="start"></input>
+<input type="button" id="stop" value="stop" name="stop"></input>
+
+<div id="userContainer">
+  <div id="svgSircle"></div>
+  <img id='mouseCursor' src="images/cursor.png"  />
+  <img id="newImg"></img>
+<div>
