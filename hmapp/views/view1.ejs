@@ -1,0 +1,88 @@
+<script>
+
+$(function() {
+  
+  $('#mouseCursor').css('display','none');
+  
+  var svgMouseClick,circle;
+  $('#svgSircle').svg({onLoad: function(svg){svgMouseClick=svg;}});
+  
+  function drawMouseClick(x,y){
+    var r=2;
+    var circle=svgMouseClick.circle(x-r/2, y-r/2, r, {fill:'none',stroke: 
+    'red', strokeWidth: 5}); 
+    $(circle).animate({svgR: 30, svgStroke: 'pink'}, 500,function(){
+      $(this).remove();
+    });
+  }
+  
+  var socket = io.connect('<%- socketConnectionString %>');
+  socket.on('connect', function() {
+    $("#userList").slideToggle("fast");
+    
+    socket.emit('adminConnected');
+    
+    $('#userListTitle').click(function(){
+        $('#userListTitle').toggleClass('userListTitleClicked');
+        $("#userList").slideToggle("fast");
+        
+        socket.emit('adminWantsOnlineUserList',function(userList){
+          $("#userList").empty();
+          for(i in userList){
+            var user=userList[i];
+            $("#userList").append("<div class='user' id='"+ user.urlId +"'>"+user.ip +":"+ user.url+ ' - ' +
+            user.rW+'x'+user.rH + " - "+ user.browser+"</div>");
+          }
+            
+          $(".user").click(function(){            
+            $(this).parent().children().removeClass('selectedUser');
+            $(this).removeClass('user');
+            $(this).addClass('selectedUser');
+            socket.emit('adminWantsToTrack',$(this).attr('id'));
+            
+          });
+        });
+     });
+    
+    
+    
+    socket.on('imageToAdminSent',function(img){
+      //alert('new image came'+img);
+      $('#newImg').attr('src',img);
+      $('#newImg').addClass('newImg');
+      $('#mouseCursor').css('display','block');
+    });
+    
+    
+    socket.on('userAction', function(action) {
+      if(action.action=='m'){
+        
+        $("#mouseCursor").css('top',action.y);
+        $("#mouseCursor").css('left',action.x);
+      }
+      
+      if(action.action=='c'){
+        //click mouse
+        $('svg').width($('#newImg').width());
+        drawMouseClick(action.x,action.y);
+      }
+      
+      if(action.action=='k'){
+        //key press
+      }
+    });
+    
+  });
+  
+  
+  
+});
+
+</script>
+<div id="userListTitle" class="userListTitle">Push me to choose the user</div>
+<div id="userList"></div>
+<div id="userContainer">
+  <div id="svgSircle"></div>
+  <img id='mouseCursor' src="images/cursor.png"  />
+  <img id="newImg"></img>
+<div>
