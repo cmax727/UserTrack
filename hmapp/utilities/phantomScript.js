@@ -15,8 +15,9 @@ module.exports = function(url,cb) {
   var resW=1366;
   var resW2=1600;
   var resH=768;
-  
-  phantom.create('--phantomPath='+GLOBAL.config.phantomPath,'--cookies-file='+GLOBAL.config.phantomCookiePath,function(ph) {
+
+  //phantom.create({binary:GLOBAL.config.phantomPath}, '--phantomPath='+GLOBAL.config.phantomPath,'--cookies-file='+GLOBAL.config.phantomCookiePath,function(ph) {
+  phantom.create({binary:GLOBAL.config.phantomPath}, '--cookies-file='+GLOBAL.config.phantomCookiePath,function(ph) {
     ph.createPage(function(page) {
       page.set('viewportSize', {width: resW,height: resH});
       page.set('onConsoleMessage', function (msg) {console.log('eval mess: ' + msg);});

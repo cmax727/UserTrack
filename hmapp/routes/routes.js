@@ -45,11 +45,18 @@ exports.getDataToTable=function(req,res){
                       
                       //arr[id]=urlAct;
                       clearTimeout(timeout);
-                      timeout=setTimeout(function(){
-                          
-                          //console.log(require('sys').inspect(newObj));
-                          res.send(newObj);
-                      },1000);
+
+                          //res.send(newObj);
+                          timeout=setTimeout(function(){
+
+                              try{
+                              //console.log(require('sys').inspect(newObj));
+                              res.send(newObj);
+                              }catch(ee){
+
+                              }
+                          },1000);
+
                   });
                   })(u,s,ua,id,users[u].sessions[s].urlActions,users);
               }

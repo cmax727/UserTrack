@@ -13,7 +13,16 @@ Utilities.prototype.htmlToImg = function(href, width, height, outputName, ext, c
   execString += ' --cookie wkhtml \'f\' '; //--javascript-delay 2000 ';
   execString += " --disable-smart-width " /*--zoom 1 --quality " + quality*/
   + " --height " + height + " --width " + width + " " + href + " " + GLOBAL.config.screenshotsPath + outputName + "." + ext;
+
+    //====== recalc for windows
+    execString = "\"" + GLOBAL.config.wkhtmltoimgPath + "\"";
+    //if (isJSdisabled) execString += " --disable-javascript ";
+    execString += ' --cookie wkhtml -f '; //--javascript-delay 2000 ';
+    execString += " --disable-smart-width " /*--zoom 1 --quality " + quality*/
+        + " --height " + height + " --width " + width + " " + href + " " + GLOBAL.config.screenshotsPath + outputName + "." + ext;
+
   console.log(execString);
+
   exec(execString, function(err, stdout, stderr) {
     console.log('htmlToImg error: ' + err);
     cb();
