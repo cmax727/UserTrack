@@ -7,7 +7,7 @@ module.exports = function(env){
   config.shortScreenshotsPath="/screenshots/";
   config.port=8080;
 
-  config.os = "win";
+  config.os = "unix";  //win
   
   if ( config.os == "win"){
 	config.wkhtmltoimgPath=__dirname+"/utilities/win/wkhtmltoimage.exe";
