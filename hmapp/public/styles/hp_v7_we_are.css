@@ -1,0 +1,152 @@
+@charset "utf-8"; 
+/* v6 or Generic - one pro or ambassador 21.03.2011 */
+html{height:100%}
+body{background:url(http://www.psimg.com/img/rm/hp/bg.gif) top repeat-x #868176; color:#000; font-family:Verdana,Arial,Helvetica,sans-serif; font-size:11px; line-height:1.2em; word-spacing:.0; letter-spacing:.0; text-align:center; margin:0; padding:3px 0 0}
+img{border:0}
+a{outline:none}
+div,ul,li,p,h1,h2,h3,a,span{margin:0;padding:0}
+/* general style for links */
+a, a:link, a:visited, a:active{color:#fff;text-decoration:none}
+a:hover{text-decoration:underline}
+/* Same width 768px */
+#container,#promos-mid-bg,#promos-n-news,.mid-end-bg,#header,#under-viparea,#games,.bttm,#copyright{width:768px}
+/* LAYOUT */
+#container{position:relative;margin:0 auto}
+#big-middle{background:url(/images/we-are-poker-welcome.jpg) top left no-repeat; height:386px; width:722px; padding-right:46px; text-align:left; position:absolute; top:121px; left:0} /* real width was width:768px; */
+/* Home Games structure - #pokerstars - all the elements to the right */
+#pokerstars { position:relative; float:right; width:420px; text-align:right; margin-top:9px}/*; border:1px solid #FC0*/
+/*#pokerstars q {position:absolute; top:0; left:-9999px}*/
+#pokerstars h1{font-size:15px; font-weight:700; word-spacing:-0.16em; margin:50px 2px 0 0}
+#bonus{width:163px; height:46px; float:right; margin-top:295px; margin-right:27px}
+#play-poker{ width:202px; height:74px; float:right; margin-top:282px}
+#hot-area{position:absolute; top:250px; right:440px}
+#hot-area a, #hot-area a:link, #hot-area a:visited, #hot-area a:hover, #hot-area a:active {display:block; width:240px; height:100px; cursor:pointer; text-decoration:none /*border:1px solid  #fc0;*/}
+/* VIP AREA - [dark area] */
+#vip-area{background-position:0 -676px; background-color:#fff; width:757px; height:245px; padding:5px 0 0 11px; position:absolute; top:959px; left:0; text-align:left; display:block; clear:both} /* real size 768px x 250px */
+/* PROMO BOXES AND BLOG - [dark area] */
+#promos-mid-bg{background-position:0 -441px; height:231px; position:absolute; top:609px; left:0}
+#promos-n-news{position:relative; height:inherit}
+#promosWrapper{float:left;width:464px;height:210px;position:relative;overflow:hidden;margin-top:14px;padding-left:27px; display:block}
+/* Promoboxes */
+#promos{position:absolute;top:0;left:27px;width:1900px;height:213px;color:#fff}
+#promos li{float:left;list-style:none;position:relative;width:157px;height:213px}
+/*#promos,#promos ul,#promos li{}*/
+#promos span{position:absolute;left:8px;width:85%;cursor:pointer}
+#promos a:hover{text-decoration:none}
+/*Blog*/
+#blog-feed{float:left;height:185px;width:220px;margin:20px 0 0 5px;padding:8px 6px 10px 8px;background:none;overflow:hidden;text-align:left;}
+#blog-feed h2{font-size:12px; font-weight:700; margin:0 10px 6px 0; padding:0 18px 3px 5px; border-bottom:1px solid #C00}
+#blog-feed h2 a, #blog-feed h2 a:link, #blog-feed h2 a:visited, #blog-feed h2 a:hover, #blog-feed h2 a:active{color:#C00; text-decoration:none}
+#scrolling-news{padding:0 15px 0 5px; overflow:auto; height:158px; width:204px; outline:none}
+#blog-feed h3{font-size:11px; font-weight:700; padding:5px 0; border-bottom:1px solid #4c4843;}
+#blog-feed p{color:#ddd; padding:5px 0; border-bottom:1px solid #555;}
+/*a.readMore,a.readMore:link,a.readMore:visited,a.readMore:hover,a.readMore:active{color:#f00; font-weight:700} not in use */
+/* Flexcroll bar for the blog */
+.scrollgeneric{line-height:1px;font-size:1px;position:absolute;top:0;left:0}
+.vscrollerbar{background-color:red;cursor:pointer}
+.scrollerjogbox{top:auto;left:auto;bottom:0;right:0}
+.vscrollerbase,.vscrollerbar,.scrollerjogbox{width:5px}
+.hscrollerbase,.hscrollerbar,.scrollerjogbox{height:10px}
+
+/* new area for welcome paragraph and buttons */
+#extra-area{ background:url(http://www.psimg.com/img/rm/hp/extra-area-bg.png) 0 0 repeat-y #000; width:726px; padding:0 18px 0 24px; position:absolute; top:840px; left:0;text-align:left; display:block}/* real width 768px*/
+
+#extra-area h1{font-size:12px; font-weight:700;padding-top:10px}
+h1 a, h1 a:link, h1 a:visited, h1 a:hover, h1 a:active{color:#bc2228}
+#extra-area h2{font-size:12px; font-weight:700; position:absolute; top:10px; right:112px}
+h2 a, h2 a:link, h2 a:visited, h2 a:hover, h2 a:active{color:#bc2228}
+
+#extra-area p{color:#fffefe; text-align:left; padding:8px 0 10px 0; line-height:14px}
+#extra-area a.gr, #extra-area a.gr:link, #extra-area a.gr:visited, #extra-area a.gr:active{color:#aeadab}
+#extra-area a.gr:hover{color:#fffefe}
+#getting_started{width:148px}
+#virtual_tour{width:148px; padding-left:30px}
+#poker-school{width:148px; padding-left:16px}
+/* END OF MIDDLE CONTENT */
+.mid-end-bg{background-position:0 -283px; height:15px; position:absolute; top:944px; left:0; clear:both}
+
+/* HEADER */
+#header{background-position:0 0; height:88px}
+#logo{float:left; width:270px; height:85px; padding-left:31px; text-align:left}
+#live{float:right; width:365px; padding:27px 21px 0 0}
+#top-menu{font-weight:700; height:20px; position:absolute; right:15px; top:5px}
+#top-menu .first{float:left; border:0 solid #FFF}
+#top-menu li{list-style-type:none; float:left; border-left:2px solid #524d47}
+#top-menu a{padding:10px}
+
+/* LANGUAGES NAV */
+#langs{color:#fff;font-weight:700;display:block; float:right; height:25px; width:180px; margin-top:5px; padding:5px 30px 0 5px}
+#langs:hover div{left:438px; top:82px}
+#drop-lang{height:210px; width:309px; position:absolute; background:url(http://www.psimg.com/img/rm/hp/bg_language_middle.gif) repeat-y transparent; left:-999em; z-index:10; font-weight:400; text-align:left}
+#drop-lang a{display:block;padding:3px 0 3px 10px}
+#drop-lang a:hover{background-color:#524d47; text-decoration:none}
+#drop-lang_top{background:url(http://www.psimg.com/img/rm/hp/bg_language_top.gif) 0 0 no-repeat transparent;width:309px;height:12px}
+#drop-lang_bottom{background:url(http://www.psimg.com/img/rm/hp/bg_language_bottom.gif) 0 0 no-repeat transparent;width:309px;height:12px;clear:both}
+#drop-lang ul,#drop-lang li{float:left;width:103px}
+#drop-lang li{list-style-type:none}
+
+/* MAIN NAV */
+#topNav {background-position:0 -91px; width:758px; height:33px; text-align:left; font-weight:700; padding-left:10px; display:block}/*background-color was #a21e00; real width was 768px */
+#topNav ul{ white-space:nowrap;list-style:none; float:left}
+#topNav a { background:url(http://www.psimg.com/img/rm/hp/div_mainnav.gif) 0 0 no-repeat; padding:7px 8px 10px 7px; color:#fff;font-size:11px; display:block }
+#topNav a:hover { background-position:-1px -36px; text-decoration:none }
+#topNav a.first { background:none }
+#topNav a.first:hover {background-position:-4px -36px;}
+#topNav li{position:relative} 
+
+/* HORIZONTAL BANNER */ /* static banner: padding-left:16px; /* /* flash banner: padding-left:14px; */
+#place-the-banner{background-position:0 -336px; width:752px; height:104px; padding-left:16px; position:absolute; top:506px; left:0;text-align:left; display:block}  /* real width 768px top:507px;*/
+.numberOfHands {margin:0; padding:0; color:#fff;position:absolute;top:55px;left:550px;font-size:18px;font-weight:700;letter-spacing:-1px; line-height:1.2em; cursor:pointer}
+
+/* FROM GAMES NAV TO END */
+#under-viparea{background:0 -676px no-repeat #fff; position:absolute; top:1209px; left:0; clear:both;text-align:center; font-size:10px} /* new games navigation */
+#games{background-position:0 -127px; height:26px; color:#e0d5ca; padding:10px 0 0 0px; display:block} /* real width and height 768px x 36px */
+#games ul { display:inline}
+#games li { display:inline;list-style:none;font-size:9px}
+/* new navigation copy of internal footer */
+.bttm{background-position:0 -300px; height:24px; padding-top:9px; display:block}
+.bttm ul { display:inline;color:#e0d5ca}
+.bttm li { display:inline;list-style:none}
+.bttm a, .bttm a:link, .bttm a:visited, .bttm a:active{color:#000; padding:0 3px 0 1px}
+/* WSOP disclaimer */
+.disclaimer p {padding:5px 19px 4px 15px;color:#726f6c}
+/* Logos*/
+#logos {padding-bottom:6px}
+#logos img {padding:0 4px 0 4px}
+#logos img.first {padding-right:0}
+#logos span { cursor:pointer}
+/* Copyright */
+#copyright{background-position:0 -228px; height:53px; color:#fff}
+#copyright p{padding-top:10px}
+#copyright a, #copyright a:link, #copyright a:visited, #copyright a:active{text-decoration:underline}
+#copyright a:hover{text-decoration:none}
+/* All the divs with opaque sprite background */
+#Tabs .box-top-margin, #vip-area, #promos-mid-bg, .promo_prev_btn, .promo_next_btn, .mid-end-bg, #header, #topNav, #place-the-banner, #under-viparea, #games, .bttm, #copyright{background-image:url(http://www.psimg.com/img/rm/hp/opaque-img-oct.jpg); background-repeat:no-repeat}
+.hscrollerbar,.vscrollerbase,.hscrollerbase,.scrollerjogbox, #big-middle, #promos-mid-bg, .mid-end-bg, #header, #topNav, #place-the-banner, #games, #copyright{background-color:#000}
+/* All the divs with transparent sprite background */
+#topNav a:hover, #topNav a.first:hover {background-image:url(http://www.psimg.com/img/rm/hp/transp-img-oct.gif); background-repeat:no-repeat;}
+
+/* SEO Tabs */
+/* with JS OFF */
+#Tabs {width:727px;height:234px;background:#000;color:#CCC; padding:5px 10px 0 10px;overflow:auto}
+#Tabs h2 {font-size:11px;padding:5px 0 0 10px}
+#Tabs p {padding:5px 5px 0 10px}
+#Tabs a,#Tabs a:link,#Tabs a:active,#Tabs a:visited{font-weight:700;}
+#Tabs a:hover {color:#fff}
+/* JS On*/
+#Tabs .tabNav {position:absolute;left:11px;top:5px;height:239px;width:224px;overflow:hidden;}
+#Tabs .tabNav a {background:#000 url(http://www.psimg.com/img/rm/hp/opaque-img-oct.jpg) -228px -168px no-repeat;color:#CCC;font-size:9px;text-transform:uppercase;display:block;padding-left:1px;}
+#Tabs .tabNav a {outline-style:none;}
+#Tabs .tabNav a:hover{background:url(http://www.psimg.com/img/rm/hp/opaque-img-oct.jpg) 0px -169px no-repeat;text-decoration:none;}
+#Tabs .tabNav a .text {padding:12px 4px 13px 25px;display:block;border-right:solid 1px #333;border-bottom:solid 1px #333}
+#Tabs .tabNav a.first .text {padding-top:11px;}
+#Tabs .tabNav a.last .text {border-bottom:none;padding-top:12px;padding-bottom:20px;}
+#Tabs .tabContent {position:absolute;left:236px;top:5px;height:239px;width:522px;background:url(http://www.psimg.com/img/rm/hp/background-right.jpg) no-repeat scroll left top transparent;padding:0;}
+#Tabs .tabContent p {line-height:18px;padding:15px 25px 0 25px;}
+
+/*Promo JS*/
+#promosWrapper li {float:left;}
+#promosWrapper a:hover {text-decoration:none}
+.promo_prev_btn,.promo_next_btn{position:absolute; top:96px; width:16px;height:20px;cursor:pointer;display:none;background:url(http://www.psimg.com/img/rm/hp/opaque-img-oct.jpg) no-repeat;}
+.promo_prev_btn {left:27px;background-position:-460px -168px}
+.promo_next_btn {right:0;background-position:-460px -189px}
