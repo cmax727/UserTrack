@@ -34,7 +34,9 @@ UserUrlAction.prototype = {
     if(this.actions.length==0) {if(cb) cb(); return;}
     var that=this;
     models.UrlAction.findById(that.urlId,function(err,ua){
+      if ( !ua ) return;
       console.log(ua.actions.length+'|'+that.actions.length);
+
       ua.actions.push.apply(ua.actions, that.actions);
       console.log(ua.actions.length);
       ua.markModified('actions'); //This is needed due to mongoose specifics

@@ -1,10 +1,2 @@
-[127.0.0.1]
-__tempUTMID=
-__utma=96992031.1951043307.1338043490.1338043490.1338043490.1
-__utmb=96992031.1.10.1338043490
-__utmc=96992031
-__utmv="96992031.|5=vid=1951043307.1=1,"
-__utmz="96992031.1338043490.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"
-gcl_id=
-vid=X.1951043307.1
-wkhtml=1
+[General]
+cookies=@Variant(\0\0\0\x7f\0\0\0\x16QList<QNetworkCookie>\0\0\0\0\x1\0\0\0\0)

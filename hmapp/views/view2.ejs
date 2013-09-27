@@ -22,23 +22,29 @@ $(function() {
             $("#tableBody").append(str);
             
         }
-        $('#dataTable').dataTable();
+        $('#dataTable').dataTable(
+                {
+                    "fnDrawCallback": function() {
+                        $('#dataTable tr').click(function(){
+                            if(!$(this).attr('class')) return;
+                            $(this).parent().children().attr('style','');
+                            $(this).parent().children().removeClass('clickedTr');
+                            $('.sorting_1').attr('style', '');
+                            $(this).attr('style', 'background-color:gray');
+                            $(this).addClass('clickedTr');
+                            $(this).find('.sorting_1').first().attr('style', 'background-color:gray');
+
+                            var td=$(this).children().first();
+                            //socket.emit('adminWantsToRetro',td.text(),td.next().text(),td.next().next().text());
+                            //socket.emit('adminWantsToRetro',td.text(),td.next().text(),td.next().next().text());
+                            socket.emit('adminWantsAnImage',td.next().next().text());
+                            //
+                        });
+                    }
+                }
+        );
         
-        $('tr').click(function(){
-         if(!$(this).attr('class')) return;
-         $(this).parent().children().attr('style','');
-         $(this).parent().children().removeClass('clickedTr');
-         $('.sorting_1').attr('style', '');
-         $(this).attr('style', 'background-color:gray');
-         $(this).addClass('clickedTr');
-         $(this).find('.sorting_1').first().attr('style', 'background-color:gray');
-         
-         var td=$(this).children().first();
-         //socket.emit('adminWantsToRetro',td.text(),td.next().text(),td.next().next().text());
-         //socket.emit('adminWantsToRetro',td.text(),td.next().text(),td.next().next().text());
-         socket.emit('adminWantsAnImage',td.next().next().text());
-         //
-       });
+
        
        $('#start').click(function(){
            

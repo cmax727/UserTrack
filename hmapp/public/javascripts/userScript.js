@@ -8,6 +8,7 @@ function socketStart(connectionString){
     socket.emit('userConnected',{browser:navigator.userAgent,url:window.location.href,resolutionW:$(document).width(),resolutionH:$(document).height()});
     
     $(document).mousemove(function(e) {
+        return;
         socket.emit('userAction', {
           action:'m',
           x:e.pageX,

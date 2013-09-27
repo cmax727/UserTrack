@@ -36,7 +36,7 @@ User.prototype = {
       
       GLOBAL.utilities.htmlToImg(url, resW, resH, urlId, "jpg",function(){});//make a screenshot
       
-      that.userUrlActions[urlId]=uua;
+      that.userUrlActions[urlId] = uua;
     });
   },
   

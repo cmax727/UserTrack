@@ -28,7 +28,13 @@ Admin.prototype = {
     this.retroStopCommand=null;
     var that=this;
     models.UrlAction.findById(urlId, function(err, urlAct) {
-      var firstActTime = urlAct.actions[0].date.getTime(); // Time of the first aciton
+        if(err) return;
+
+        var firstActTime = 0;
+        if ( urlAct.actions[0]) {
+            firstActTime = urlAct.actions[0].date.getTime();
+        } // Time of the first aciton
+
       
       //Counters to know when all the actions are visualized
       var counter = 0;

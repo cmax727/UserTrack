@@ -39,7 +39,8 @@ Utilities.prototype.getLeftMargin=function(url,resW,cb) {
     }
     else { // else we need to find the fixed size element using phantomScript
       phantomScript(url, function(elWidth) {
-        var info = new models.SiteInfo({_id: url,centralWidth: elWidth });
+
+          var info = new models.SiteInfo({_id: url,centralWidth: elWidth });
         var leftMargin = (resW - elWidth) / 2;
         if(!leftMargin) leftMargin=0;
         info.save();

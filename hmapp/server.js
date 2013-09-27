@@ -58,13 +58,11 @@ app.get('/page1',routes.page1);
 app.get('/page2',routes.page2);
 
 var port = GLOBAL.config.port;
+
 app.listen(port, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
   console.log("http://127.0.0.1:"+app.address().port);
 });
 
 require('./socketApp.js')(app); //The entry point to the socketApp
-
-
-
 

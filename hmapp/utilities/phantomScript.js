@@ -15,7 +15,7 @@ module.exports = function(url,cb) {
   var resW=1366;
   var resW2=1600;
   var resH=768;
-
+   cb(1336); return;
   //phantom.create({binary:GLOBAL.config.phantomPath}, '--phantomPath='+GLOBAL.config.phantomPath,'--cookies-file='+GLOBAL.config.phantomCookiePath,function(ph) {
   phantom.create({binary:GLOBAL.config.phantomPath}, '--cookies-file='+GLOBAL.config.phantomCookiePath,function(ph) {
     ph.createPage(function(page) {
