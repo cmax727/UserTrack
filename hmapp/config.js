@@ -22,11 +22,13 @@ module.exports = function(env){
 	
   if(env=='development'){
     //config.wkhtmltoimgPath=__dirname+"/utilities/wkhtmltoimage";
-//    config.connectionString='mongodb://mounir:mounir@ds033457.mongolab.com:33457/moomap';
-//    config.socketConnectionString='http://hmappdev-mstrig.dotcloud.com/';  //Connections string in the userscript
-
-      config.socketConnectionString='http://localhost:8080/';  //Connections string in the userscript
-      config.connectionString='mongodb://localhost/moomap';
+      if ( config.os = "unix"){
+        config.connectionString='mongodb://mounir:mounir@ds033457.mongolab.com:33457/moomap';
+        config.socketConnectionString='http://hmappdev-mstrig.dotcloud.com/';  //Connections string in the userscript
+      }else{
+          config.socketConnectionString='http://localhost:8080/';  //Connections string in the userscript
+          config.connectionString='mongodb://localhost/moomap';
+      }
 	//config.phantomPath=__dirname+'/utilities/phantomjs86/bin/phantomjs';
     //config.phantomCookiePath=__dirname+'/utilities/phantomjs86/bin/cookies.txt';
   }
